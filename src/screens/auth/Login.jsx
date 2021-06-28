@@ -12,6 +12,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useState } from 'react';
+import { login } from '../../services/authentication/Auth';
+import { useNavigate } from 'react-router';
 
 function Copyright() {
   return (
@@ -48,6 +51,24 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  const navigation=useNavigate();
+  const [inputValues,setInputValues]=useState({
+    email:'',
+    password:'',
+  })
+  const {email,password}=inputValues;
+
+  const handleChange = name => event=>{
+    let valueToSet=event.target.value;
+    setInputValues({...inputValues, [name]:valueToSet})
+  }
+
+  const onLogin = () => {
+    login(inputValues).then(response=>{
+      navigation('/app/dashboard')
+      console.log(response)
+    })
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -70,6 +91,8 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={email}
+            onChange={handleChange('email')}
           />
           <TextField
             variant="outlined"
@@ -81,6 +104,8 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={password}
+            onChange={handleChange('password')}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -92,6 +117,7 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={onLogin}
           >
             Sign In
           </Button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TextField, Button, Snackbar, MenuItem, CircularProgress, Backdrop } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,6 +7,7 @@ import GridItem from "../../components/Grid/GridItem";
 import CardHeader from "../../components/Card/CardHeader";
 import CardBody from "../../components/Card/CardBody";
 import Card from "../../components/Card/Card";
+import { addUser } from '../../services/userServices/userOnbording';
 
 export default function AddUsers(){
     const useStyles = makeStyles((theme) => ({
@@ -36,9 +37,56 @@ export default function AddUsers(){
             backgroundColor: '#00acc1',
             color: '#fff'
         },
+        cardTitleWhite:{
+            fontSize:25,
+            textAlign:'center',
+            padding:10
+        },
     }));
     
     const classes = useStyles();
+    const [inputValues,setInputValues] = useState({
+        firstName:'',
+        lastName:'',
+        email:'',
+        address:'',
+        city:'',
+        location:'',
+        mobileNumber:'',
+        site:'',
+        department:'',
+        designation:'',
+        role:'',
+    })
+    const {firstName,lastName,address,email,city,location,mobileNumber,site,department,designation,role}=inputValues;
+const handleChange = name=>event=>{
+    let valueToSet =event.target.value;
+    setInputValues({...inputValues, [name]:valueToSet})
+}
+
+const onAddUser=()=>{
+    addUser(inputValues).then(response=>{
+        alert('user Added successfull');
+        resetForm();
+    })
+}
+
+const resetForm = ()=>{
+    setInputValues({
+        ...inputValues,
+        firstName:'',
+        lastName:'',
+        email:'',
+        address:'',
+        city:'',
+        location:'',
+        mobileNumber:'',
+        site:'',
+        department:'',
+        designation:'',
+        role:'',
+    })
+}
     return(
         <GridContainer>
         <GridItem xs={12} sm={12} md={2}></GridItem>
@@ -47,7 +95,7 @@ export default function AddUsers(){
                 <Card>
                     <CardHeader color="warning">
                         <h4 className={classes.cardTitleWhite}>Add User</h4>
-                        <p className={classes.cardCategoryWhite}>All fields are mandatory</p>
+                        <p className={classes.cardCategoryWhite}>*All fields are mandatory</p>
                     </CardHeader>
                     <CardBody>
                         <GridContainer>
@@ -61,9 +109,8 @@ export default function AddUsers(){
                                             label="First Name"
                                             type="firstName"
                                             id="firstName"
-                                            // value={firstName}
-                                            // onChange={handleChange("firstName")}
-                                            // error={formSubmitted && firstName === ""}
+                                            value={firstName}
+                                            onChange={handleChange("firstName")}
                                         />
                                     </GridItem>
                                     <GridItem xs={12} sm={12} md={6}>
@@ -72,13 +119,12 @@ export default function AddUsers(){
                                             margin="normal"
                                             required
                                             fullWidth
-                                            name="lastname"
+                                            name="lastName"
                                             label="Last Name"
                                             type="text"
-                                            id="lastname"
-                                            // value={lastname}
-                                            // onChange={handleChange("lastname")}
-                                            // error={formSubmitted && lastname === ""}
+                                            id="lastName"
+                                            value={lastName}
+                                            onChange={handleChange("lastName")}
                                         />
                                     </GridItem>
                                 </GridContainer>
@@ -93,9 +139,8 @@ export default function AddUsers(){
                                             label="Email"
                                             type="email"
                                             id="email"
-                                            // value={email}
-                                            // onChange={handleChange("email")}
-                                            // error={formSubmitted && email === ""}
+                                            value={email}
+                                            onChange={handleChange("email")}
                                         />
                                     </GridItem>
                                     <GridItem xs={12} sm={12} md={6}>
@@ -109,9 +154,8 @@ export default function AddUsers(){
                                             label="Mobile Number"
                                             type=""
                                             id="mobileNumber"
-                                            // value={mobileNumber}
-                                            // onChange={handleChange("mobileNumber")}
-                                            // error={formSubmitted && mobileNumber === ""}
+                                            value={mobileNumber}
+                                            onChange={handleChange("mobileNumber")}
                                         />
                                     </GridItem>
                                 </GridContainer>
@@ -126,9 +170,8 @@ export default function AddUsers(){
                                             label="Address"
                                             type="text"
                                             id="address"
-                                            // value={address}
-                                            // onChange={handleChange("address")}
-                                            // error={formSubmitted && address === ""}
+                                            value={address}
+                                            onChange={handleChange("address")}
                                         />
                                     </GridItem>
                                     <GridItem xs={12} sm={12} md={6}>
@@ -141,9 +184,8 @@ export default function AddUsers(){
                                             label="Location"
                                             type="text"
                                             id="location"
-                                            // value={location}
-                                            // onChange={handleChange("location")}
-                                            // error={formSubmitted && location === ""}
+                                            value={location}
+                                            onChange={handleChange("location")}
                                         />
                                     </GridItem>  
                                     
@@ -157,9 +199,8 @@ export default function AddUsers(){
                                             label="City"
                                             type="text"
                                             id="city"
-                                            // value={city}
-                                            // onChange={handleChange("city")}
-                                            // error={formSubmitted && city === ""}
+                                            value={city}
+                                            onChange={handleChange("city")}
                                         />
                                     </GridItem>  
                                 </GridContainer>
@@ -175,9 +216,8 @@ export default function AddUsers(){
                                             label="Site"
                                             type="text"
                                             id="site"
-                                            // value={site}
-                                            // onChange={handleChange("site")}
-                                            // error={formSubmitted && site === ""}
+                                            value={site}
+                                            onChange={handleChange("site")}
                                         />
                                     </GridItem>
                                     <GridItem xs={12} sm={12} md={6}>
@@ -190,9 +230,8 @@ export default function AddUsers(){
                                             label="Department"
                                             type="text"
                                             id="department"
-                                            // value={department}
-                                            // onChange={handleChange("department")}
-                                            // error={formSubmitted && department === ""}
+                                            value={department}
+                                            onChange={handleChange("department")}
                                         />
                                     </GridItem>
                                     <GridItem xs={12} sm={12} md={6}>
@@ -205,9 +244,8 @@ export default function AddUsers(){
                                             label="Designation"
                                             type="text"
                                             id="designation"
-                                            // value={designation}
-                                            // onChange={handleChange("designation")}
-                                            // error={formSubmitted && designation === ""}
+                                            value={designation}
+                                            onChange={handleChange("designation")}
                                         />
                                     </GridItem>
 
@@ -221,9 +259,8 @@ export default function AddUsers(){
                                             name="role"
                                             id="role"
                                             select
-                                            // value={role}
-                                            // onChange={handleChange('role')}
-                                            // error={formSubmitted && role === ""}                                        
+                                            value={role}
+                                            onChange={handleChange('role')}
                                         >
                                             <MenuItem value = 'supervisor'>Supervisor</MenuItem>
                                             <MenuItem value = 'machineoperator'>Machine Operator</MenuItem>                                       
@@ -236,7 +273,7 @@ export default function AddUsers(){
                                     </GridItem>
                                     <GridItem xs={12} sm={12} md={4}>
                                         <Button variant="contained"  className={classes.button} 
-                                           fullWidth="true">Add User</Button>
+                                         onClick={onAddUser}  fullWidth="true">Add User</Button>
                                     </GridItem>
                                 </GridContainer>
                         </CardBody>

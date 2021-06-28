@@ -41,16 +41,17 @@ const items = [
     icon: UsersIcon,
     title: 'User Management'
   },
-  // {
-  //   href: '/app/products',
-  //   icon: ShoppingBagIcon,
-  //   title: 'Products'
-  // },
-  // {
-  //   href: '/app/account',
-  //   icon: UserIcon,
-  //   title: 'Account'
-  // },
+  {
+    href: '/app/myOrderManagement',
+    icon: ShoppingBagIcon,
+    title: 'My Orders'
+  },
+  {
+    href: '/app/orderManagement',
+    icon: ShoppingBagIcon,
+    title: 'Order Management'
+  },
+  
   // {
   //   href: '/app/settings',
   //   icon: SettingsIcon,

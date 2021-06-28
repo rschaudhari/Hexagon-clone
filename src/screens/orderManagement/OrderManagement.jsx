@@ -1,37 +1,45 @@
 import React from 'react';
 
 import CustomTabs from "../../components/CustomTabs/CustomTabs";
-import Users from "./Users";
 import AddIcon from '@material-ui/icons/Add';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import AddUser from './AddUsers';
+import OpenOrders from './OpenOrders';
+import OkayOrders from './OkayOrders';
+import NotOkayOrders from './NotOkayOrders';
 
 
-export default function UserManagement() {
+export default function OrderManagement() {
 
     return (
         
         <CustomTabs
-            title="Users:"
+            title="Orders:"
             headerColor="info"
             tabs={[
               {
-                tabName: "Add",
-                tabIcon: AddIcon,
-                allowed: true,
-                tabContent: (
-                  <AddUser />
-                )
-              },
-              {
-                tabName: "List",
+                tabName: "Open",
                 tabIcon: FormatListBulletedIcon,
                 allowed: true,
                 tabContent: (
-                  <Users />
+                  <OpenOrders />
                 )
               },
-             
+              {
+                tabName: "OkayOrders",
+                tabIcon: FormatListBulletedIcon,
+                allowed: true,
+                tabContent: (
+                  <OkayOrders />
+                )
+              },
+              {
+                tabName: "NotOkayOrders",
+                tabIcon: FormatListBulletedIcon,
+                allowed: true,
+                tabContent: (
+                  <NotOkayOrders />
+                )
+              }
             ]}
           />
     );

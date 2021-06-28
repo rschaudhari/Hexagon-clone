@@ -70,7 +70,7 @@ const theme = createMuiTheme({
     },
 });
 
-export default function Users() {
+export default function MyOrderList() {
 
     const classes = useStyles();
     let navigate = useNavigate();
@@ -85,7 +85,7 @@ export default function Users() {
         <Container>
             <Container maxWidth={false}>
                 <GridItem xs={12} sm={12} md={12}>
-                    <Typography className={classes.title}> Users </Typography>
+                    <Typography className={classes.title}> MyOrders </Typography>
                     <ThemeProvider theme={theme}>
                         <GridContainer>
                             <Table className={classes.table}>
@@ -95,19 +95,22 @@ export default function Users() {
                                                   <Typography variant="h6" gutterBottom className={classes.titleColor}>Sr No.</Typography>
                                               </TableCell>
                                               <TableCell >
-                                                  <Typography variant="h6" gutterBottom className={classes.titleColor}>Name</Typography>
+                                                  <Typography variant="h6" gutterBottom className={classes.titleColor}>Date</Typography>
                                               </TableCell>
                                               <TableCell >
-                                                  <Typography variant="h6" gutterBottom className={classes.titleColor}>Mobile No</Typography>
+                                                  <Typography variant="h6" gutterBottom className={classes.titleColor}>Trip Start Point</Typography>
                                               </TableCell>
                                               <TableCell >
-                                                  <Typography variant="h6" gutterBottom className={classes.titleColor}>Email</Typography>
+                                                  <Typography variant="h6" gutterBottom className={classes.titleColor}>Trip End Point</Typography>
                                               </TableCell>
                                               <TableCell >
-                                                  <Typography variant="h6" gutterBottom className={classes.titleColor}>Site</Typography>
+                                                  <Typography variant="h6" gutterBottom className={classes.titleColor}>Distance</Typography>
                                               </TableCell>
                                               <TableCell >
-                                                  <Typography variant="h6" gutterBottom className={classes.titleColor}>Role</Typography>
+                                                  <Typography variant="h6" gutterBottom className={classes.titleColor}>Vehicle Type</Typography>
+                                              </TableCell>
+                                              <TableCell >
+                                                  <Typography variant="h6" gutterBottom className={classes.titleColor}>Fare</Typography>
                                               </TableCell>
                                               </TableRow>
                                     
@@ -116,19 +119,10 @@ export default function Users() {
                                                 <Typography variant="body1" gutterBottom>1</Typography>
                                             </TableCell>
                                             <TableCell >
-                                                <Typography variant="body1" gutterBottom>Rahul Chaudhari</Typography>
+                                                <Typography variant="body1" gutterBottom>2 MAY 2021</Typography>
                                             </TableCell>
                                             <TableCell >
-                                                <Typography variant="body1" gutterBottom>7219755821</Typography>
-                                            </TableCell>
-                                            <TableCell >
-                                                <Typography variant="body1" gutterBottom>rs@gmail.com</Typography>
-                                            </TableCell>
-                                            <TableCell >
-                                                <Typography variant="body1" gutterBottom>PUNE</Typography>
-                                            </TableCell>
-                                            <TableCell >
-                                                <Typography variant="body1" gutterBottom>SUPERVISOR</Typography>
+                                                <Typography variant="body1" gutterBottom>2921090193029</Typography>
                                             </TableCell>
                                             </TableRow>
                                         </TableBody>

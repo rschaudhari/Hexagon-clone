@@ -70,7 +70,7 @@ const theme = createMuiTheme({
     },
 });
 
-export default function Users() {
+export default function OkayOrders() {
 
     const classes = useStyles();
     let navigate = useNavigate();

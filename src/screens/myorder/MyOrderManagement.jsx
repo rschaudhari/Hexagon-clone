@@ -1,18 +1,18 @@
 import React from 'react';
 
 import CustomTabs from "../../components/CustomTabs/CustomTabs";
-import Users from "./Users";
 import AddIcon from '@material-ui/icons/Add';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import AddUser from './AddUsers';
+import AddOrder from './AddOrder';
+import MyOrderList from './MyOrderList';
 
 
-export default function UserManagement() {
+export default function MyOrderManagement() {
 
     return (
         
         <CustomTabs
-            title="Users:"
+            title="Orders:"
             headerColor="info"
             tabs={[
               {
@@ -20,7 +20,7 @@ export default function UserManagement() {
                 tabIcon: AddIcon,
                 allowed: true,
                 tabContent: (
-                  <AddUser />
+                  <AddOrder />
                 )
               },
               {
@@ -28,7 +28,7 @@ export default function UserManagement() {
                 tabIcon: FormatListBulletedIcon,
                 allowed: true,
                 tabContent: (
-                  <Users />
+                  <MyOrderList/>
                 )
               },
              
